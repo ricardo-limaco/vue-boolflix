@@ -3,7 +3,7 @@
     <ul>
       <li><img :src="imgPath" alt="" class="_poster"></li>
       <li>{{ title }}</li>
-      <li v-if="this.title != this.original">{{ original }}</li>
+      <li v-if="this.title != this.original">{{ originalTitle }}</li>
       <li>{{ flagPath }}</li>
     </ul>
 
