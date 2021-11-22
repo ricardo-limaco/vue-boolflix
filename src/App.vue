@@ -3,8 +3,8 @@
     
     <header>
       <nav class="d-flex justify-content-between align-items-center">
-        <h1>BOOLFLIX</h1>
-        <div class="input-group mb-3 _input-search">
+        <a href="#"><h1>BOOLFLIX</h1></a>
+        <div class="input-group _input-search">
           <input
           type="text" class="form-control" placeholder="Inserisci testo..."
           aria-label="Recipient's username" aria-describedby="button-addon2" id="search"
@@ -16,23 +16,24 @@
 
 
     <main>
-      
-
-      
+      <section class="container">
+        <h3 class="title-category">Film</h3>
+          <div class="row g-0">
+            <Card v-for="movie in movies" :key="movie.id" :data="movie"></Card>
+          </div>
+        <h3 class="title-category">Serie</h3>
+          <div class="row g-0">
+            <Card v-for="serie in series" :key="serie.id" :data="serie"></Card>
+          </div>
+      </section>
     </main>
 
 
-    <div class="row">
-      <div class="col">
-        <h3>Movies</h3>
-        <Card v-for="movie in movies" :key="movie.id" :data="movie"></Card>
-      </div>
 
-      <div class="col">
-        <h3>Series</h3>
-        <Card v-for="serie in series" :key="serie.id" :data="serie"></Card>
-      </div>
-    </div>
+
+    
+ 
+   
 
 
   </div>
@@ -58,7 +59,6 @@ export default {
 
   methods: {
 
-   
     searchQuery(url, textToSearch, dataKey) {
       axios.get(this.apiUrl + url, {
         params: {
@@ -74,13 +74,12 @@ export default {
     filter() {
       this.searchQuery("/search/movie", this.textToSearch, "movies");
       this.searchQuery("/search/tv", this.textToSearch, "series");
+      
     },
   },
 
 
-  mounted() {
-
-  }
+  mounted() {}
 }
 </script>
 

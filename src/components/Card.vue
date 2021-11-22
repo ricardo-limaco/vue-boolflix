@@ -1,27 +1,18 @@
 <template>
-  <div>
-    <ul>
-      <li><img :src="imgPath" alt="" class="_poster"></li>
-      <li>Titolo: {{ title }}</li>
-      <li v-if="originalTitle">Titolo originale: {{ originalTitle }}</li>
-      <li>Bandiera: <img :src="flags" alt="" class="_lang"></li>
-      <li v-if="this.data.overview"><p>Testo: {{ this.data.overview }}</p></li>
-
-
-      <li>
-        <strong>Voto: </strong>
-        <div class="stars-container" style="display: inline-block">
-          <i
-            v-for="num in 5" :key="'vote_star_' + num"
-            class="fa" :class="num <= vote ? 'fa-star' : 'fa-star-o'"
-          ></i>
-        </div>
-      </li>
-
-    </ul>
-
-  
-
+  <div class="col-4 _card-container">
+    <img :src="imgPath" :alt="title" class="_poster">
+    <div class="_overlay text-white">
+      <h2 class="_title">{{ title }}</h2>
+      <h3 class="_original-title" v-if="originalTitle">{{ originalTitle }}</h3>
+      <img :src="flags" :alt="this.data.original_language" class="_lang">
+      <div class="_vote" v-if="vote"> 
+        <i v-for="num in 5" :key="'vote_star_' + num" class="fa aa" :class="num <= vote ? 'fa-star' : 'fa-star-o'"></i>
+      </div>
+      <div class="_overview" v-if="this.data.overview">
+        <h3 class="_original-title text-center">Trama</h3>
+        <p>{{ this.data.overview }}</p>
+      </div>
+    </div>
   </div>
 
 </template>
@@ -80,9 +71,6 @@ export default {
   },
 
 
-  methods: {
- 
-
-  }
+  methods: {}
 }
 </script>
